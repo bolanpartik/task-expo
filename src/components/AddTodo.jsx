@@ -1,8 +1,21 @@
 import { useState } from "react";
 
-export default function AddTodo({ setAllTodos }) {
+export default function AddTodo({ setAllTodos, todoRef }) {
 
     const [userInput, setUserInput] = useState('');
+
+    const handleAddTodo = () => {
+        
+        setAllTodos(prevTodos => [
+            ...prevTodos, {
+                title: userInput,
+                id: todoRef.current,
+                isCompleted: false
+            }
+        ]);
+        
+        setUserInput('');
+    };
 
     const handleInputChange=(event)=>{
         setUserInput(event.target.value)
@@ -18,7 +31,7 @@ export default function AddTodo({ setAllTodos }) {
                     onChange={handleInputChange}
                     placeholder="Enter your task"
                 />
-                <button>Add Todo</button>
+                <button onClick={handleAddTodo}>Add Todo</button>
             </div>
         </div>
     );
