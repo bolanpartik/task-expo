@@ -1,4 +1,8 @@
-export default function AddTodo() {
+import { useState } from "react";
+
+export default function AddTodo({ setAllTodos }) {
+
+    const [userInput, setUserInput] = useState('');
 
     return (
         <div>
