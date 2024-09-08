@@ -6,6 +6,11 @@ export default function AddTodo({ setAllTodos, todoRef }) {
 
     const handleAddTodo = () => {
         
+        if (userInput == null || userInput === '') {
+            alert('Please enter a valid Todo.');
+            return;
+        }
+        
         setAllTodos(prevTodos => [
             ...prevTodos, {
                 title: userInput,
@@ -13,7 +18,7 @@ export default function AddTodo({ setAllTodos, todoRef }) {
                 isCompleted: false
             }
         ]);
-        
+
         todoRef.current += 1;
         setUserInput('');
     };
