@@ -14,6 +14,7 @@ export default function AddTodo({ setAllTodos, todoRef }) {
             }
         ]);
         
+        todoRef.current += 1;
         setUserInput('');
     };
 
