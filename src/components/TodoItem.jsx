@@ -1,3 +1,4 @@
+import { CheckCheck } from 'lucide-react'
 import { SquarePen } from 'lucide-react'
 import { Trash2 } from 'lucide-react';
 import { useEffect, useState } from "react"
@@ -43,6 +44,9 @@ export default function TodoItem({ allTodos, id, setAllTodos }) {
                 />
                 <p className="text-lg font-medium w-full transition-all">{currTodo.title}</p>
             </div>
+
+            {isTodoCompleted && <CheckCheck className="text-green-500"/>}
+
             <div className="flex w-1/4 justify-between">
                 <SquarePen
                     onClick={handleEdit}
