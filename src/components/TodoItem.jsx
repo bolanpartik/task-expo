@@ -45,7 +45,7 @@ export default function TodoItem({ allTodos, id, setAllTodos }) {
                     onChange={handleChange}
                     className="w-4 accent-green-500 transition-all"
                 />
-                <p className="text-lg font-medium w-full transition-all">{currTodo.title}</p>
+                <p className="text-lg font-medium w-full transition-all" style={{ textDecoration: isTodoCompleted ? 'line-through' : 'none' }}>{currTodo.title}</p>
             </div>
 
             {isTodoCompleted && <CheckCheck className="text-green-500"/>}
