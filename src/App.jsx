@@ -11,8 +11,15 @@ function App() {
   return (
     <div>
       <NavBar />
-      <AddTodo setAllTodos={setAllTodos} todoRef={todoRef} />
-      <TodoCard />
+      <AddTodo 
+          setAllTodos={setAllTodos} 
+          todoRef={todoRef} 
+      />
+      <TodoCard 
+          allTodos={allTodos} 
+          setAllTodos={setAllTodos} 
+          todoRef={todoRef}
+      />
     </div>
   )
 }
