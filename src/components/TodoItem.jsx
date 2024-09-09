@@ -1,3 +1,4 @@
+import { SquarePen } from 'lucide-react'
 import { Trash2 } from 'lucide-react';
 import { useEffect, useState } from "react"
 
@@ -5,7 +6,18 @@ export default function TodoItem({ allTodos, id, setAllTodos }) {
 
     const [currTodo, setCurrTodo] = useState(allTodos.find(t => t.id ==id))
     const [isTodoCompleted, setIsTodoCompleted] = useState(currTodo.isCompleted)
-    
+
+    const handleEdit = () => {
+
+        const res = prompt('Enter the edited task.')
+        if (res == null || res == '') {
+            alert('Enter a valid Todo')
+        }
+        else {
+            setCurrTodo((prev) => ({ ...prev, title: res }))
+        }
+    }
+
     useEffect(() => {
         setCurrTodo((prevTodo) => ({ ...prevTodo, isCompleted: isTodoCompleted }));
     }, [isTodoCompleted]);
@@ -28,6 +40,9 @@ export default function TodoItem({ allTodos, id, setAllTodos }) {
                 onChange={handleChange}
             />
             <p>{currTodo.title}</p>
+            <SquarePen
+                onClick={handleEdit}
+            />
             <Trash2
                 onClick={handleDelete}
             />
