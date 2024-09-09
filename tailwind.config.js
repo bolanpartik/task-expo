@@ -7,7 +7,10 @@ export default {
   theme: {
     extend: {
       backgroundColor:{
-        customBlack:'#0F0F0F'
+        customBlack:'#0F0F0F',
+        customGray:'#333A45',
+        customDarkGray:'#22272e',
+        hoverShade:'#2f363f'
       },
       borderColor:{
         customGray:'#2D2D2D'
