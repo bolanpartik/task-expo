@@ -8,7 +8,8 @@ export default function TodoItem({ allTodos, id, setAllTodos }) {
     const [currTodo, setCurrTodo] = useState(allTodos.find(t => t.id ==id))
     const [isTodoCompleted, setIsTodoCompleted] = useState(currTodo.isCompleted)
 
-    const handleEdit = () => {
+    const handleEdit = (e) => {
+        e.stopPropagation()
 
         const res = prompt('Enter the edited task.')
         if (res == null || res == '') {
@@ -27,7 +28,9 @@ export default function TodoItem({ allTodos, id, setAllTodos }) {
         setIsTodoCompleted(prev => !prev)
     }
 
-    const handleDelete = () => {
+    const handleDelete = (e) => {
+        e.stopPropagation()
+
         setAllTodos([...allTodos].filter(t => {
             return t.id !== currTodo.id
         }))
