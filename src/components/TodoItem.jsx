@@ -6,8 +6,8 @@ export default function TodoItem({ allTodos, id, setAllTodos }) {
     const [isTodoCompleted, setIsTodoCompleted] = useState(currTodo.isCompleted)
 
     return (
-        <div >
-            Todo Item
+        <div>
+            <p>{currTodo.title}</p>
         </div>
     )
 }
