@@ -1,3 +1,4 @@
+import { Trash2 } from 'lucide-react';
 import { useEffect, useState } from "react"
 
 export default function TodoItem({ allTodos, id, setAllTodos }) {
@@ -13,6 +14,12 @@ export default function TodoItem({ allTodos, id, setAllTodos }) {
         setIsTodoCompleted(prev => !prev)
     }
 
+    const handleDelete = () => {
+        setAllTodos([...allTodos].filter(t => {
+            return t.id !== currTodo.id
+        }))
+    }
+
     return (
         <div>
             <input
@@ -21,6 +28,9 @@ export default function TodoItem({ allTodos, id, setAllTodos }) {
                 onChange={handleChange}
             />
             <p>{currTodo.title}</p>
+            <Trash2
+                onClick={handleDelete}
+            />
         </div>
     )
 }
