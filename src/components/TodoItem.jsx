@@ -34,7 +34,7 @@ export default function TodoItem({ allTodos, id, setAllTodos }) {
     }
 
     return (
-        <div className="flex bg-customGray w-full rounded-md p-3 justify-between transition-all duration-300 hover:outline outline-1 outline-blue-600 items-center">
+        <div className="flex bg-customGray w-full rounded-md p-3 justify-between transition-all duration-300 hover:outline outline-1 outline-blue-600 items-center" onClick={handleChange}>
             <div className="flex ml-3 gap-3 w-1/2">
                 <input
                     type="checkbox"
