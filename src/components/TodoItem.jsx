@@ -7,6 +7,10 @@ export default function TodoItem({ allTodos, id, setAllTodos }) {
 
     return (
         <div>
+            <input
+                type="checkbox"
+                checked={isTodoCompleted}
+            />
             <p>{currTodo.title}</p>
         </div>
     )
