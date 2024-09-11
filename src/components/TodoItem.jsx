@@ -22,6 +22,11 @@ export default function TodoItem({ allTodos, id, setAllTodos }) {
 
     useEffect(() => {
         setCurrTodo((prevTodo) => ({ ...prevTodo, isCompleted: isTodoCompleted }));
+
+        const updatedTodos = allTodos.map(t =>
+            t.id === currTodo.id ? {...currTodo,isCompleted:isTodoCompleted} : t
+        )
+        setAllTodos(updatedTodos)
     }, [isTodoCompleted]);
 
     const handleChange = () => {
