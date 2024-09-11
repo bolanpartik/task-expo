@@ -9,17 +9,19 @@ function App() {
   const [allTodos, setAllTodos] = useState([])
 
   return (
-    <div>
+    <div className="bg-gradient-to-b from-gray-800 to-black min-h-dvh max-h-dvh text-customCyan">
       <NavBar />
-      <AddTodo 
-          setAllTodos={setAllTodos} 
-          todoRef={todoRef} 
-      />
-      <TodoCard 
-          allTodos={allTodos} 
-          setAllTodos={setAllTodos} 
-          todoRef={todoRef}
-      />
+      <div className="flex justify-center w-full items-center flex-col">
+        <AddTodo
+            setAllTodos={setAllTodos}
+            todoRef={todoRef}
+        />
+        <TodoCard
+            allTodos={allTodos}
+            setAllTodos={setAllTodos}
+            todoRef={todoRef}
+        />
+      </div>
     </div>
   )
 }
