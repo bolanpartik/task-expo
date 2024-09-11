@@ -9,12 +9,15 @@ export default function TodoCard({ allTodos, setAllTodos,todoRef}) {
 
     return (
         <div>
-            <div>
-                <p>Your Tasks </p>
-                <button
-                    onClick={handleDeleteAll}>Delete All
-                </button>
-            </div>
+            {allTodos.length > 0 ?
+                <div>
+                    <p>Your Tasks </p>
+                    <button
+                        onClick={handleDeleteAll}>Delete All
+                    </button>
+                </div>
+                : <p>Currently No tasks available.</p>
+            }
             {allTodos?.map((todo) => {
                 return <TodoItem
                             key={todo.id}
