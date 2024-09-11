@@ -37,7 +37,7 @@ export default function TodoItem({ allTodos, id, setAllTodos }) {
     }
 
     return (
-        <div className="flex bg-customGray w-full rounded-md p-3 justify-between transition-all duration-300 hover:outline outline-1 outline-blue-600 items-center" onClick={handleChange}>
+        <div className={`flex bg-customGray w-full rounded-md p-3 justify-between hover:outline outline-1 outline-blue-600 items-center ${isTodoCompleted?'opacity-60':'opacity-100'}`} onClick={handleChange}>
             <div className="flex ml-3 gap-3 w-1/2">
                 <input
                     type="checkbox"
@@ -45,7 +45,7 @@ export default function TodoItem({ allTodos, id, setAllTodos }) {
                     onChange={handleChange}
                     className="w-4 accent-green-500 transition-all"
                 />
-                <p className="text-lg font-medium w-full transition-all" style={{ textDecoration: isTodoCompleted ? 'line-through' : 'none' }}>{currTodo.title}</p>
+                <p className={`text-lg font-medium w-full transition-all ${isTodoCompleted?'line-through':'no-underline'}`}>{currTodo.title}</p>
             </div>
 
             {isTodoCompleted && <CheckCheck className="text-green-500"/>}
