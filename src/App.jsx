@@ -7,10 +7,11 @@ function App() {
 
   const todoRef = useRef(0)
   const [allTodos, setAllTodos] = useState([])
+  const [mode,setMode]=useState('dark')
 
   return (
-    <div className="bg-gradient-to-b from-gray-800 to-black min-h-dvh max-h-dvh text-customCyan">
-      <NavBar />
+    <div className="bg-gradient-to-b from-gray-800 to-black min-h-dvh text-customCyan select-none">
+      <NavBar mode={mode} setMode={setMode}/>
       <div className="flex justify-center w-full items-center flex-col">
         <AddTodo
             setAllTodos={setAllTodos}
