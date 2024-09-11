@@ -35,7 +35,7 @@ export default function AddTodo({ setAllTodos, todoRef }) {
                     type="text"
                     value={userInput}
                     onChange={handleInputChange}
-                    className="bg-[#22272e] h-10 w-80 rounded-lg ring-2 px-2 ring-gray-700 focus:placeholder:opacity-40 focus:ring-sky-600 focus:outline-none focus:bg-customBlack"
+                    className="bg-customDarkGray h-10 w-80 rounded-lg ring-2 px-2 ring-gray-700 focus:placeholder:opacity-40 focus:ring-sky-600 focus:outline-none focus:bg-customBlack"
                     placeholder="Enter your task"
                 />
                 <button
