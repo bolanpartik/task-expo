@@ -2,6 +2,10 @@ import TodoItem from "./TodoItem"
 
 export default function TodoCard({ allTodos, setAllTodos, todoRef }) {
 
+    const completedTodos = allTodos.filter(t => {
+        return t.isCompleted
+    })
+
     const handleCompleted = () => {
         setAllTodos([...allTodos].filter(t => {
             return !t.isCompleted
@@ -18,10 +22,12 @@ export default function TodoCard({ allTodos, setAllTodos, todoRef }) {
             {allTodos.length > 0 ?
                 <div className="flex justify-between w-full px-4">
                     <p className="w-2/3">Your Tasks </p>
-                    <button
-                        className="outline-none border-none hover:bg-customGray rounded-sm px-1"
-                        onClick={handleCompleted}>Delete Completed
-                    </button>
+                    {completedTodos.length > 0 &&
+                        <button
+                            className="outline-none border-none hover:bg-customGray rounded-sm px-1"
+                            onClick={handleCompleted}>Delete Completed
+                        </button>
+                    }
                     <button
                         className="outline-none border-none hover:bg-customGray rounded-sm px-1"
                         onClick={handleDeleteAll}>Delete All
