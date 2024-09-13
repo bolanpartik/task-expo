@@ -30,6 +30,7 @@ export default function AddTodo({ setAllTodos, todoRef }) {
             }
         ]);
 
+        setUserDate(getTodayDate())
         todoRef.current += 1;
         setUserInput('');
     };
