@@ -25,7 +25,8 @@ export default function AddTodo({ setAllTodos, todoRef }) {
             ...prevTodos, {
                 title: userInput,
                 id: todoRef.current,
-                isCompleted: false
+                isCompleted: false,
+                dueDate:userDate
             }
         ]);
 
