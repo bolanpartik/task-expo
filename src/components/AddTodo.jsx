@@ -3,6 +3,7 @@ import { useState } from "react";
 export default function AddTodo({ setAllTodos, todoRef }) {
 
     const [userInput, setUserInput] = useState('');
+    const [userDate,setUserDate]=useState(new Date().toJSON().slice(0,10))
 
     const handleAddTodo = () => {
 
@@ -38,7 +39,10 @@ export default function AddTodo({ setAllTodos, todoRef }) {
                     className="bg-customDarkGray h-10 w-80 rounded-lg ring-2 px-2 ring-gray-700 focus:placeholder:opacity-40 focus:ring-sky-600 focus:outline-none focus:bg-customBlack"
                     placeholder="Enter your task"
                 />
-                <input type="date" />
+                <input
+                    type="date"
+                    value={userDate}
+                />
                 <button
                     onClick={handleAddTodo}
                     className="bg-black p-2 px-4 border-none outline-none text-customCyan rounded-md shadow hover:shadow-white/30"
