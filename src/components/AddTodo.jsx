@@ -5,6 +5,10 @@ export default function AddTodo({ setAllTodos, todoRef }) {
     const [userInput, setUserInput] = useState('');
     const [userDate,setUserDate]=useState(new Date().toJSON().slice(0,10))
 
+    const handleDateChange=(event)=>{
+        setUserDate(event.target.value)
+    }
+
     const handleAddTodo = () => {
 
         if (userInput == null || userInput === '') {
@@ -42,6 +46,7 @@ export default function AddTodo({ setAllTodos, todoRef }) {
                 <input
                     type="date"
                     value={userDate}
+                    onChange={handleDateChange}
                 />
                 <button
                     onClick={handleAddTodo}
