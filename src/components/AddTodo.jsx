@@ -9,6 +9,10 @@ export default function AddTodo({ setAllTodos, todoRef }) {
         setUserDate(event.target.value)
     }
 
+    const getTodayDate=()=>{
+        return new Date().toJSON().slice(0,10);
+    }
+
     const handleAddTodo = () => {
 
         if (userInput == null || userInput === '') {
@@ -47,6 +51,7 @@ export default function AddTodo({ setAllTodos, todoRef }) {
                     type="date"
                     value={userDate}
                     onChange={handleDateChange}
+                    min={getTodayDate()}
                 />
                 <button
                     onClick={handleAddTodo}
