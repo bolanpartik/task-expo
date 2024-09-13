@@ -3,14 +3,15 @@ import { useState } from "react";
 export default function AddTodo({ setAllTodos, todoRef }) {
 
     const [userInput, setUserInput] = useState('');
-    const [userDate,setUserDate]=useState(new Date().toJSON().slice(0,10))
-
-    const handleDateChange=(event)=>{
-        setUserDate(event.target.value)
-    }
 
     const getTodayDate=()=>{
         return new Date().toJSON().slice(0,10);
+    }
+
+    const [userDate,setUserDate]=useState(getTodayDate)
+
+    const handleDateChange=(event)=>{
+        setUserDate(event.target.value)
     }
 
     const handleAddTodo = () => {
