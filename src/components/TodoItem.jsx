@@ -43,9 +43,9 @@ export default function TodoItem({ allTodos, id, setAllTodos }) {
 
     return (
         <div className={`flex bg-customGray w-full rounded-md p-3 justify-between hover:outline outline-1 outline-blue-600 items-center ${isTodoCompleted?'opacity-60':'opacity-100'}`} onClick={handleChange}>
-            <div className="flex ml-3 gap-3 w-1/2">
+            <div className="flex ml-3 gap-3 w-1/2 items-center">
                 <p className={`text-lg font-medium w-full transition-all ${isTodoCompleted?'line-through':'no-underline'}`}>{currTodo.title}</p>
-                <p>{currTodo.dueDate}</p>
+                <p className='w-1/3'>{currTodo.dueDate}</p>
             </div>
 
             {isTodoCompleted && <CheckCheck className="text-green-500"/>}
