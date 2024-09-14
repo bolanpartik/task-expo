@@ -5,7 +5,7 @@ export default function AddTodo({ setAllTodos, todoRef }) {
     const [userInput, setUserInput] = useState('');
 
     const getTodayDate=()=>{
-        return new Date().toJSON().slice(0,10);
+        return new Date().toISOString().slice(0,10);
     }
 
     const [userDate,setUserDate]=useState(getTodayDate)
