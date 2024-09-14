@@ -8,6 +8,18 @@ export default function TodoItem({ allTodos, id, setAllTodos }) {
     const [currTodo, setCurrTodo] = useState(allTodos.find(t => t.id ==id))
     const [isTodoCompleted, setIsTodoCompleted] = useState(currTodo.isCompleted)
 
+    const checkDueDate=()=>{
+        const todayDate=new Date().toISOString().slice(0,10);
+        const dueDate=currTodo.dueDate;
+        if(todayDate>=dueDate){
+            setIsTodoCompleted(true)
+        }
+    }
+
+    useEffect(()=>{
+        checkDueDate()
+    },[])
+
     const handleEdit = (e) => {
         e.stopPropagation()
 
