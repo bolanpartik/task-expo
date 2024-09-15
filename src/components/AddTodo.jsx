@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function AddTodo({ setAllTodos, todoRef }) {
 
@@ -48,6 +48,16 @@ export default function AddTodo({ setAllTodos, todoRef }) {
     const handleInputChange = (event) => {
         setUserInput(event.target.value)
     }
+
+    useEffect(()=>{
+
+        const timer=setInterval(()=>{
+            setMinTime(getCurrTime)
+        },60000)
+
+        return ()=> clearInterval(timer)
+
+    },[])
 
     return (
         <div className="flex flex-col items-center gap-5 mt-5">
