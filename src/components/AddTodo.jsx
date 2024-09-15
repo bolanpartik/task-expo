@@ -13,6 +13,7 @@ export default function AddTodo({ setAllTodos, todoRef }) {
     const [userInput, setUserInput] = useState('');
     const [userDate,setUserDate]=useState(getTodayDate)
     const [userTime,setUserTime]=useState(getCurrTime)
+    const [minTime,setMinTime]=useState(getCurrTime)
 
     const handleTimeChange=(event)=>{
         setUserTime(event.target.value)
@@ -70,6 +71,7 @@ export default function AddTodo({ setAllTodos, todoRef }) {
                     type="time"
                     value={userTime}
                     onChange={handleTimeChange}
+                    min={minTime}
                 />
                 <button
                     onClick={handleAddTodo}
