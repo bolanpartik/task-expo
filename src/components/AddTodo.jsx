@@ -2,13 +2,17 @@ import { useState } from "react";
 
 export default function AddTodo({ setAllTodos, todoRef }) {
 
-    const [userInput, setUserInput] = useState('');
-
     const getTodayDate=()=>{
         return new Date().toISOString().slice(0,10);
     }
 
+    const getCurrTime=()=>{
+        return new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',hour12:false})
+    }
+
+    const [userInput, setUserInput] = useState('');
     const [userDate,setUserDate]=useState(getTodayDate)
+    const [userTime,setUserTime]=useState(getCurrTime)
 
     const handleDateChange=(event)=>{
         setUserDate(event.target.value)
@@ -59,6 +63,7 @@ export default function AddTodo({ setAllTodos, todoRef }) {
                 />
                 <input
                     type="time"
+                    value={userTime}
                 />
                 <button
                     onClick={handleAddTodo}
