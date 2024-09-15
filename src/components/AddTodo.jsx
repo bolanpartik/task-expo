@@ -11,9 +11,9 @@ export default function AddTodo({ setAllTodos, todoRef }) {
     }
 
     const [userInput, setUserInput] = useState('');
-    const [userDate,setUserDate]=useState(getTodayDate)
-    const [userTime,setUserTime]=useState(getCurrTime)
-    const [minTime,setMinTime]=useState(getCurrTime)
+    const [userDate,setUserDate]=useState(getTodayDate())
+    const [userTime,setUserTime]=useState(getCurrTime())
+    const [minTime,setMinTime]=useState(getCurrTime())
 
     const handleTimeChange=(event)=>{
         setUserTime(event.target.value)
@@ -62,7 +62,8 @@ export default function AddTodo({ setAllTodos, todoRef }) {
     useEffect(()=>{
 
         const timer=setInterval(()=>{
-            setMinTime(getCurrTime)
+            setMinTime(getCurrTime())
+            setUserTime(getCurrTime())
         },60000)
 
         return ()=> clearInterval(timer)
