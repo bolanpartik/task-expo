@@ -92,6 +92,7 @@ export default function AddTodo({ setAllTodos, todoRef }) {
                     value={userTime}
                     onChange={handleTimeChange}
                     min={minTime}
+                    className="px-3 py-1 rounded-lg ring-2 ring-gray-700 focus:outline-none focus:ring-sky-600 bg-customDarkGray"
                 />
                 <button
                     onClick={handleAddTodo}
