@@ -14,6 +14,10 @@ export default function AddTodo({ setAllTodos, todoRef }) {
     const [userDate,setUserDate]=useState(getTodayDate)
     const [userTime,setUserTime]=useState(getCurrTime)
 
+    const handleTimeChange=(event)=>{
+        setUserTime(event.target.value)
+    }
+
     const handleDateChange=(event)=>{
         setUserDate(event.target.value)
     }
@@ -30,7 +34,8 @@ export default function AddTodo({ setAllTodos, todoRef }) {
                 title: userInput,
                 id: todoRef.current,
                 isCompleted: false,
-                dueDate:userDate
+                dueDate:userDate,
+                dueTime:userTime
             }
         ]);
 
@@ -64,6 +69,7 @@ export default function AddTodo({ setAllTodos, todoRef }) {
                 <input
                     type="time"
                     value={userTime}
+                    onChange={handleTimeChange}
                 />
                 <button
                     onClick={handleAddTodo}
