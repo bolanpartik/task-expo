@@ -30,6 +30,16 @@ export default function AddTodo({ setAllTodos, todoRef }) {
             return;
         }
 
+        if(userDate == null || userDate == ''){
+            alert('Please enter a valid date.')
+            return;
+        }
+
+        if(userDate === getTodayDate() && userTime < minTime){
+            alert('Please enter a valid time. You can not add a past task.')
+            return;
+        }
+
         setAllTodos(prevTodos => [
             ...prevTodos, {
                 title: userInput,
@@ -39,7 +49,7 @@ export default function AddTodo({ setAllTodos, todoRef }) {
                 dueTime:userTime
             }
         ]);
-
+        setUserTime(getCurrTime())
         setUserDate(getTodayDate())
         todoRef.current += 1;
         setUserInput('');
