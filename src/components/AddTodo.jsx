@@ -57,6 +57,9 @@ export default function AddTodo({ setAllTodos, todoRef }) {
                     min={getTodayDate()}
                     className="px-3 py-1 rounded-lg ring-2 ring-gray-700 focus:outline-none focus:ring-sky-600 bg-customDarkGray"
                 />
+                <input
+                    type="time"
+                />
                 <button
                     onClick={handleAddTodo}
                     className="bg-black p-2 px-4 border-none outline-none text-customCyan rounded-md shadow hover:shadow-white/30"
