@@ -22,7 +22,14 @@ export default function TodoItem({ allTodos, id, setAllTodos }) {
 
     useEffect(()=>{
         checkDueDate()
-    },[])
+        const currentTime = new Date().getTime();
+        const dueDateTime = new Date(`${currTodo.dueDate}T${currTodo.dueTime}:00`).getTime();
+        const timeUntilDue = dueDateTime - currentTime;
+        if(timeUntilDue>0){
+            const timeOutid=setTimeout(checkDueDate,timeUntilDue)
+            return ()=> clearTimeout(timeOutid)
+        }
+    },[currTodo])
 
     const handleEdit = (e) => {
         e.stopPropagation()
