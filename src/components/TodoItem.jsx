@@ -66,15 +66,15 @@ export default function TodoItem({ allTodos, id, setAllTodos }) {
 
     return (
         <div className={`flex bg-customGray w-full rounded-md p-3 justify-between hover:outline outline-1 outline-blue-600 items-center ${isTodoCompleted?'opacity-60':'opacity-100'}`} onClick={handleChange}>
-            <div className="flex ml-3 gap-3 w-1/2 items-center">
-                <p className={`text-lg font-medium w-full transition-all ${isTodoCompleted?'line-through':'no-underline'}`}>{currTodo.title}</p>
-                <p className='w-1/3'>{currTodo.dueDate}</p>
+            <div className="flex gap-3 w-2/3 items-center">
+                <p className={`text-lg font-medium w-2/3 transition-all ${isTodoCompleted?'line-through':'no-underline'}`}>{currTodo.title}</p>
+                <p className='w-1/4'>{currTodo.dueDate}</p>
                 <p >{currTodo.dueTime}</p>
             </div>
 
             {isTodoCompleted && <CheckCheck className="text-green-500"/>}
 
-            <div className="flex w-1/4 justify-between">
+            <div className="flex w-1/5 justify-between">
                 <SquarePen
                     onClick={handleEdit}
                     className="hover:text-green-500 hover:scale-95"
