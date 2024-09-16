@@ -11,8 +11,12 @@ export default function TodoItem({ allTodos, id, setAllTodos }) {
     const checkDueDate=()=>{
         const todayDate=new Date().toISOString().slice(0,10);
         const dueDate=currTodo.dueDate;
+        const nowTime=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',hour12:false})
+        const dueTime=currTodo.dueTime
         if(todayDate>=dueDate){
-            setIsTodoCompleted(true)
+            if(nowTime>=dueTime){
+                setIsTodoCompleted(true)
+            }
         }
     }
 
