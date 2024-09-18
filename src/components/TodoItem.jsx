@@ -7,6 +7,7 @@ export default function TodoItem({ allTodos, id, setAllTodos }) {
 
     const [currTodo, setCurrTodo] = useState(allTodos.find(t => t.id ==id))
     const [isTodoCompleted, setIsTodoCompleted] = useState(currTodo.isCompleted)
+    const [isDeleting,setIsDeleting]=useState(false)
 
     const checkDueDate=()=>{
         const todayDate=new Date().toISOString().slice(0,10);
@@ -58,14 +59,17 @@ export default function TodoItem({ allTodos, id, setAllTodos }) {
 
     const handleDelete = (e) => {
         e.stopPropagation()
+        setIsDeleting(true)
+        setTimeout(()=>{
 
-        setAllTodos([...allTodos].filter(t => {
-            return t.id !== currTodo.id
-        }))
+            setAllTodos([...allTodos].filter(t => {
+                return t.id !== currTodo.id
+            }))
+        },500)
     }
 
     return (
-        <div className={`flex bg-customGray w-full rounded-md p-3 justify-between hover:outline outline-1 outline-blue-600 items-center ${isTodoCompleted?'opacity-60':'opacity-100'}`} onClick={handleChange}>
+        <div className={`flex bg-customGray w-full rounded-md p-3 justify-between hover:outline outline-1 outline-blue-600 items-center ${isTodoCompleted?'opacity-60':'opacity-100'} animate-duration-1000 ${isDeleting?'animate-jump-out':'animate-jump-in'} `} onClick={handleChange}>
             <div className="flex gap-3 w-2/3 items-center">
                 <p className={`text-lg font-medium w-2/3 transition-all ${isTodoCompleted?'line-through':'no-underline'}`}>{currTodo.title}</p>
                 <p className='w-1/4'>{currTodo.dueDate}</p>
