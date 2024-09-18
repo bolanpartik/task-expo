@@ -19,7 +19,7 @@ export default function NavBar({mode,setMode}){
             <div className='flex gap-5 items-center mr-6'>
                 <button
                     onClick={handleTheme}
-                    className='rounded-full p-2 transition-all hover:bg-hoverShade'>
+                    className='rounded-full p-2 transition-all hover:bg-hoverShade hover:animate-jump'>
                         {mode=='dark'?<Sun/>:<Moon/>}
                 </button>
                 <a href='#' className='underline-offset-4 hover:underline hover:scale-110 decoration-yellow-500 transition-all'>Home</a>
