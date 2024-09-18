@@ -97,7 +97,7 @@ export default function AddTodo({ setAllTodos, todoRef }) {
                 />
                 <button
                     onClick={handleAddTodo}
-                    className="bg-black p-2 px-4 border-none outline-none text-customCyan rounded-md shadow hover:shadow-white/30 hover:animate-jump hover:animate-duration-500"
+                    className="bg-black p-2 px-4 border-none outline-none text-customCyan rounded-md shadow hover:shadow-white/30 focus:animate-jump focus:animate-duration-500"
                     >Add Todo
                 </button>
             </div>
