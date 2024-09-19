@@ -36,21 +36,24 @@ export default function TodoCard({ allTodos, setAllTodos, todoRef }) {
     return (
         <div className="flex flex-col justify-center w-1/2 p-3 items-center mt-5 bg-black/40 gap-4 rounded-lg">
             {allTodos.length > 0 ?
-                <div className="flex justify-between w-full px-4">
-                    <p className="w-2/3">Your Tasks </p>
-                    <input
-                        type="text"
-                        value={searchInput}
-                        onChange={handleSearchChange}
-                        placeholder="Search"
-                    />
-                        <button
-                            className="outline-none border-none hover:bg-customGray rounded-sm px-1 disabled:cursor-not-allowed"
-                            disabled={completedTodos.length<=0}
-                            onClick={handleCompleted}>Delete Completed
-                        </button>
+                <div className="flex justify-between w-full px-4 h-8">
+                    <div className="flex w-2/3 justify-around items-center">
+                        <p className="text-2xl">Your Tasks </p>
+                        <input
+                            type="text"
+                            value={searchInput}
+                            onChange={handleSearchChange}
+                            placeholder="Search"
+                            className="bg-customDarkGray w-auto rounded-lg px-2 text-xs h-6 transition-all focus:h-full placeholder:opacity-40 focus:outline-none"
+                        />
+                    </div>
                     <button
-                        className="outline-none border-none hover:bg-customGray rounded-sm px-1"
+                        className="outline-none border-none hover:bg-customGray rounded-md px-1 disabled:cursor-not-allowed transition-all"
+                        disabled={completedTodos.length<=0}
+                        onClick={handleCompleted}>Delete Completed
+                    </button>
+                    <button
+                        className="outline-none border-none hover:bg-customGray rounded-md px-1 transition-all"
                         onClick={handleDeleteAll}>Delete All
                     </button>
                 </div>
