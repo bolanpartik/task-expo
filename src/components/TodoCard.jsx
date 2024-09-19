@@ -56,14 +56,21 @@ export default function TodoCard({ allTodos, setAllTodos, todoRef }) {
                 </div>
                 : <p>Currently No tasks available.</p>
             }
-            {todosToDisplay.map((todo) => {
-                return <TodoItem
-                    key={todo.id}
-                    allTodos={allTodos}
-                    setAllTodos={setAllTodos}
-                    id={todo.id}
-                />
-            })
+            {(filteredTodos.length===0 && searchInput)?
+                <p>No Todo found...</p>
+            :
+            <>
+                {todosToDisplay.map((todo) => {
+                    return <TodoItem
+                        key={todo.id}
+                        allTodos={allTodos}
+                        setAllTodos={setAllTodos}
+                        id={todo.id}
+                        searchInput={searchInput}
+                        />
+                    })
+                }
+            </>
             }
         </div>
     )
