@@ -6,6 +6,8 @@ export default function TodoCard({ allTodos, setAllTodos, todoRef }) {
     const [searchInput,setSearchInput]=useState('')
     const [filteredTodos,setFilteredTodos]=useState([])
 
+    const todosToDisplay = searchInput ? filteredTodos : allTodos;
+
     const handleSearchChange=(event)=>{
         const searchTerm=event.target.value;
         setSearchInput(searchTerm)
@@ -54,7 +56,7 @@ export default function TodoCard({ allTodos, setAllTodos, todoRef }) {
                 </div>
                 : <p>Currently No tasks available.</p>
             }
-            {allTodos?.map((todo) => {
+            {todosToDisplay.map((todo) => {
                 return <TodoItem
                     key={todo.id}
                     allTodos={allTodos}
