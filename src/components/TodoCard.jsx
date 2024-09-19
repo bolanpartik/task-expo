@@ -22,6 +22,10 @@ export default function TodoCard({ allTodos, setAllTodos, todoRef }) {
             {allTodos.length > 0 ?
                 <div className="flex justify-between w-full px-4">
                     <p className="w-2/3">Your Tasks </p>
+                    <input
+                        type="text"
+                        placeholder="Search"
+                    />
                         <button
                             className="outline-none border-none hover:bg-customGray rounded-sm px-1 disabled:cursor-not-allowed"
                             disabled={completedTodos.length<=0}
