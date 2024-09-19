@@ -4,10 +4,16 @@ import TodoItem from "./TodoItem"
 export default function TodoCard({ allTodos, setAllTodos, todoRef }) {
 
     const [searchInput,setSearchInput]=useState('')
+    const [filteredTodos,setFilteredTodos]=useState([])
 
     const handleSearchChange=(event)=>{
         const searchTerm=event.target.value;
         setSearchInput(searchTerm)
+
+        const filteredItems = allTodos.filter((t) =>
+            t.title.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+        setFilteredTodos(filteredItems);
     }
 
     const completedTodos = allTodos.filter(t => {
