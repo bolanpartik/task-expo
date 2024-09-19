@@ -1,6 +1,14 @@
+import { useState } from "react";
 import TodoItem from "./TodoItem"
 
 export default function TodoCard({ allTodos, setAllTodos, todoRef }) {
+
+    const [searchInput,setSearchInput]=useState('')
+
+    const handleSearchChange=(event)=>{
+        const searchTerm=event.target.value;
+        setSearchInput(searchTerm)
+    }
 
     const completedTodos = allTodos.filter(t => {
         return t.isCompleted
@@ -24,6 +32,8 @@ export default function TodoCard({ allTodos, setAllTodos, todoRef }) {
                     <p className="w-2/3">Your Tasks </p>
                     <input
                         type="text"
+                        value={searchInput}
+                        onChange={handleSearchChange}
                         placeholder="Search"
                     />
                         <button
