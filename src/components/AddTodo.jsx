@@ -1,26 +1,26 @@
 import { useEffect, useState } from "react";
 
-export default function AddTodo({ setAllTodos, todoRef }) {
+export default function AddTodo({ setAllTodos, todoRef, mode }) {
 
-    const getTodayDate=()=>{
-        return new Date().toISOString().slice(0,10);
+    const getTodayDate = () => {
+        return new Date().toISOString().slice(0, 10);
     }
 
-    const getCurrTime=()=>{
-        return new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',hour12:false})
+    const getCurrTime = () => {
+        return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
     }
 
     const [userInput, setUserInput] = useState('');
-    const [userDate,setUserDate]=useState(getTodayDate())
-    const [userTime,setUserTime]=useState(getCurrTime())
-    const [minTime,setMinTime]=useState(getCurrTime())
+    const [userDate, setUserDate] = useState(getTodayDate());
+    const [userTime, setUserTime] = useState(getCurrTime());
+    const [minTime, setMinTime] = useState(getCurrTime());
 
-    const handleTimeChange=(event)=>{
-        setUserTime(event.target.value)
+    const handleTimeChange = (event) => {
+        setUserTime(event.target.value);
     }
 
-    const handleDateChange=(event)=>{
-        setUserDate(event.target.value)
+    const handleDateChange = (event) => {
+        setUserDate(event.target.value);
     }
 
     const handleAddTodo = () => {
@@ -30,13 +30,13 @@ export default function AddTodo({ setAllTodos, todoRef }) {
             return;
         }
 
-        if(userDate == null || userDate == ''){
-            alert('Please enter a valid date.')
+        if (userDate == null || userDate === '') {
+            alert('Please enter a valid date.');
             return;
         }
 
-        if(userDate === getTodayDate() && userTime < minTime){
-            alert('Please enter a valid time. You can not add a past task.')
+        if (userDate === getTodayDate() && userTime <= minTime) {
+            alert('Please enter a valid time. You cannot add a past task.');
             return;
         }
 
@@ -45,30 +45,30 @@ export default function AddTodo({ setAllTodos, todoRef }) {
                 title: userInput,
                 id: todoRef.current,
                 isCompleted: false,
-                dueDate:userDate,
-                dueTime:userTime
+                dueDate: userDate,
+                dueTime: userTime
             }
         ]);
-        setUserTime(getCurrTime())
-        setUserDate(getTodayDate())
+        setUserTime(getCurrTime());
+        setUserDate(getTodayDate());
         todoRef.current += 1;
         setUserInput('');
     };
 
     const handleInputChange = (event) => {
-        setUserInput(event.target.value)
+        setUserInput(event.target.value);
     }
 
-    useEffect(()=>{
+    useEffect(() => {
 
-        const timer=setInterval(()=>{
-            setMinTime(getCurrTime())
-            setUserTime(getCurrTime())
-        },60000)
+        const timer = setInterval(() => {
+            setMinTime(getCurrTime());
+            setUserTime(getCurrTime());
+        }, 60000);
 
-        return ()=> clearInterval(timer)
+        return () => clearInterval(timer);
 
-    },[])
+    }, []);
 
     return (
         <div className="flex flex-col items-center gap-5 mt-5">
@@ -78,7 +78,10 @@ export default function AddTodo({ setAllTodos, todoRef }) {
                     type="text"
                     value={userInput}
                     onChange={handleInputChange}
-                    className="bg-customDarkGray h-10 w-80 rounded-lg ring-2 px-2 ring-gray-700 focus:placeholder:opacity-40 focus:ring-sky-600 focus:outline-none focus:bg-customBlack"
+                    className={`h-10 w-80 rounded-lg ring-2 px-2 focus:outline-none focus:ring-2 focus:ring-sky-600
+                    ${mode === "dark"
+                        ? "bg-customDarkGray ring-gray-700 text-white focus:bg-customBlack"
+                        : "bg-gray-100 ring-gray-400 text-gray-900 focus:bg-white"}`}
                     placeholder="Enter your task"
                 />
                 <input
@@ -86,19 +89,29 @@ export default function AddTodo({ setAllTodos, todoRef }) {
                     value={userDate}
                     onChange={handleDateChange}
                     min={getTodayDate()}
-                    className="px-3 py-1 rounded-lg ring-2 ring-gray-700 focus:outline-none focus:ring-sky-600 bg-customDarkGray"
+                    className={`px-3 py-1 rounded-lg ring-2 focus:outline-none focus:ring-sky-600
+                    ${mode === "dark"
+                        ? "bg-customDarkGray ring-gray-700 text-white"
+                        : "bg-gray-100 ring-gray-400 text-gray-900"}`}
                 />
                 <input
                     type="time"
                     value={userTime}
                     onChange={handleTimeChange}
                     min={minTime}
-                    className="px-3 py-1 rounded-lg ring-2 ring-gray-700 focus:outline-none focus:ring-sky-600 bg-customDarkGray"
+                    className={`px-3 py-1 rounded-lg ring-2 focus:outline-none focus:ring-sky-600
+                    ${mode === "dark"
+                        ? "bg-customDarkGray ring-gray-700 text-white"
+                        : "bg-gray-100 ring-gray-400 text-gray-900"}`}
                 />
                 <button
                     onClick={handleAddTodo}
-                    className="bg-black p-2 px-4 border-none outline-none text-customCyan rounded-md shadow hover:shadow-white/30 focus:animate-jump focus:animate-duration-500"
-                    >Add Todo
+                    className={`p-2 px-4 border-none outline-none rounded-md shadow hover:shadow-sm focus:animate-jump focus:animate-duration-500
+                    ${mode === "dark"
+                        ? "bg-black text-customCyan hover:shadow-white"
+                        : "bg-sky-600 text-white hover:bg-sky-700 hover:shadow-black"}`}
+                >
+                    Add Todo
                 </button>
             </div>
         </div>
