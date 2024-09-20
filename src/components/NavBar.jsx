@@ -11,7 +11,7 @@ export default function NavBar({ mode, setMode }){
         <div className={`h-16 flex justify-between items-center backdrop-blur-xl sticky top-0 z-10 border-b transition-all 
             ${mode === 'dark'
                 ? 'bg-black/30 text-customCyan border-customGray'
-                : 'bg-white/80 text-gray-900 border-gray-300 shadow'}`}>
+                : 'bg-white/10 text-gray-900 border-gray-300 shadow'}`}>
 
             <div className='flex items-center ml-8'>
                 <p className={`text-3xl font-bold ${mode === 'dark' ? 'text-customCyan' : 'text-gray-900'}`}>
@@ -23,7 +23,7 @@ export default function NavBar({ mode, setMode }){
                 <button
                     onClick={handleTheme}
                     className={`rounded-full p-2 transition-all
-                    ${mode === 'dark' ? 'hover:bg-hoverShade' : 'hover:bg-gray-200'} 
+                    ${mode === 'dark' ? 'hover:bg-hoverShade' : 'hover:bg-gray-300'}
                     hover:animate-jump`}>
                     {mode === 'dark' ? <Sun className="text-yellow-400" /> : <Moon className="text-gray-700" />}
                 </button>
