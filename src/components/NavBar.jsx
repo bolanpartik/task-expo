@@ -13,16 +13,16 @@ export default function NavBar({ mode, setMode }){
                 ? 'bg-black/30 text-customCyan border-customGray'
                 : 'bg-white/10 text-gray-900 border-gray-300 shadow'}`}>
 
-            <div className='flex items-center ml-8'>
-                <p className={`text-3xl font-bold ${mode === 'dark' ? 'text-customCyan' : 'text-gray-900'}`}>
+            <div className='flex items-center ml-2 sm:ml-8'>
+                <p className={`text-2xl sm:text-3xl font-black sm:font-bold ${mode === 'dark' ? 'text-customCyan' : 'text-gray-900'}`}>
                     Todo-Expo
                 </p>
             </div>
 
-            <div className='flex gap-5 items-center mr-6'>
+            <div className='flex text-sm sm:text-base gap-2 sm:gap-5 items-center mr-2 sm:mr-6'>
                 <button
                     onClick={handleTheme}
-                    className={`rounded-full p-2 transition-all
+                    className={`rounded-full p-1 sm:p-2 transition-all
                     ${mode === 'dark' ? 'hover:bg-hoverShade' : 'hover:bg-gray-300'}
                     hover:animate-jump`}>
                     {mode === 'dark' ? <Sun className="text-yellow-400" /> : <Moon className="text-gray-700" />}
