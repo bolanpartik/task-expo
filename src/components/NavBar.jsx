@@ -28,23 +28,20 @@ export default function NavBar({ mode, setMode }){
                     {mode === 'dark' ? <Sun className="text-yellow-400" /> : <Moon className="text-gray-700" />}
                 </button>
 
-                <a href='#' className={`underline-offset-4 hover:underline hover:scale-110 transition-all
-                    ${mode === 'dark' ? 'decoration-yellow-500 text-customCyan' : 'decoration-yellow-900 text-gray-900'}`}>
-                    Home
-                </a>
-                <a href='#' className={`underline-offset-4 hover:underline hover:scale-110 transition-all
-                    ${mode === 'dark' ? 'decoration-yellow-500 text-customCyan' : 'decoration-yellow-900 text-gray-900'}`}>
-                    Contact
-                </a>
-                <a href='#' className={`underline-offset-4 hover:underline hover:scale-110 transition-all
-                    ${mode === 'dark' ? 'decoration-yellow-500 text-customCyan' : 'decoration-yellow-900 text-gray-900'}`}>
-                    Support
-                </a>
-                <a href='#' className={`underline-offset-4 hover:underline hover:scale-110 transition-all
-                    ${mode === 'dark' ? 'decoration-yellow-500 text-customCyan' : 'decoration-yellow-900 text-gray-900'}`}>
-                    About
-                </a>
+                <NavLinks title='Home' mode={mode}/>
+                <NavLinks title='Contact' mode={mode}/>
+                <NavLinks title='Support' mode={mode}/>
+                <NavLinks title='About' mode={mode}/>
             </div>
         </div>
     );
+}
+
+function NavLinks({title,mode}){
+    return(
+        <a href='#' className={`underline-offset-4 hover:underline hover:scale-110 transition-all
+            ${mode === 'dark' ? 'decoration-yellow-500 text-customCyan' : 'decoration-yellow-900 text-gray-900'}`}>
+            {title}
+        </a>
+    )
 }
