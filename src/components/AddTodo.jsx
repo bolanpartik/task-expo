@@ -74,36 +74,9 @@ export default function AddTodo({ setAllTodos, todoRef, mode }) {
         <div className="flex flex-col items-center gap-5 mt-5">
             <p className="text-3xl">New Task Entry</p>
             <div className="flex gap-4">
-                <input
-                    type="text"
-                    value={userInput}
-                    onChange={handleInputChange}
-                    className={`h-10 w-80 rounded-lg ring-2 px-2 focus:outline-none focus:ring-2 focus:ring-sky-600
-                    ${mode === "dark"
-                        ? "bg-customDarkGray ring-gray-700 text-white focus:bg-customBlack"
-                        : "bg-gray-100 ring-gray-400 text-gray-900 focus:bg-white"}`}
-                    placeholder="Enter your task"
-                />
-                <input
-                    type="date"
-                    value={userDate}
-                    onChange={handleDateChange}
-                    min={getTodayDate()}
-                    className={`px-3 py-1 rounded-lg ring-2 focus:outline-none focus:ring-sky-600
-                    ${mode === "dark"
-                        ? "bg-customDarkGray ring-gray-700 text-white"
-                        : "bg-gray-100 ring-gray-400 text-gray-900"}`}
-                />
-                <input
-                    type="time"
-                    value={userTime}
-                    onChange={handleTimeChange}
-                    min={minTime}
-                    className={`px-3 py-1 rounded-lg ring-2 focus:outline-none focus:ring-sky-600
-                    ${mode === "dark"
-                        ? "bg-customDarkGray ring-gray-700 text-white"
-                        : "bg-gray-100 ring-gray-400 text-gray-900"}`}
-                />
+                <TitleInput userInput={userInput} handleInputChange={handleInputChange} mode={mode} />
+                <DateInput userDate={userDate} handleDateChange={handleDateChange} mode={mode} />
+                <TimeInput userTime={userTime} handleTimeChange={handleTimeChange} minTime={minTime} mode={mode} />
                 <button
                     onClick={handleAddTodo}
                     className={`p-2 px-4 border-none outline-none rounded-md shadow hover:shadow-sm focus:animate-jump focus:animate-duration-500
@@ -116,4 +89,50 @@ export default function AddTodo({ setAllTodos, todoRef, mode }) {
             </div>
         </div>
     );
+}
+
+
+function TitleInput({userInput,handleInputChange,mode}){
+    return(
+        <input
+            type="text"
+            value={userInput}
+            onChange={handleInputChange}
+            className={`h-10 w-80 rounded-lg ring-2 px-2 focus:outline-none focus:ring-2 focus:ring-sky-600
+            ${mode === "dark"
+                ? "bg-customDarkGray ring-gray-700 text-white focus:bg-customBlack"
+                : "bg-gray-100 ring-gray-400 text-gray-900 focus:bg-white"}`}
+            placeholder="Enter your task"
+        />
+    )
+}
+
+function DateInput({userDate,handleDateChange,mode}){
+    return(
+        <input
+            type="date"
+            value={userDate}
+            onChange={handleDateChange}
+            min={new Date().toISOString().slice(0, 10)}
+            className={`px-3 py-1 rounded-lg ring-2 focus:outline-none focus:ring-sky-600
+            ${mode === "dark"
+                ? "bg-customDarkGray ring-gray-700 text-white"
+                : "bg-gray-100 ring-gray-400 text-gray-900"}`}
+        />
+    )
+}
+
+function TimeInput({userTime, handleTimeChange, minTime, mode}){
+    return(
+        <input
+            type="time"
+            value={userTime}
+            onChange={handleTimeChange}
+            min={minTime}
+            className={`px-3 py-1 rounded-lg ring-2 focus:outline-none focus:ring-sky-600
+            ${mode === "dark"
+                ? "bg-customDarkGray ring-gray-700 text-white"
+                : "bg-gray-100 ring-gray-400 text-gray-900"}`}
+        />
+    )
 }
