@@ -33,10 +33,17 @@ export default function AddTodo({ setAllTodos, todoRef, mode }) {
         if (userDate == null || userDate === '') {
             alert('Please enter a valid date.');
             return;
+        }else if(userDate<getTodayDate()){
+            alert("Can't add past task.")
+            return;
         }
 
         if (userDate === getTodayDate() && userTime <= minTime) {
-            alert('Please enter a valid time. You cannot add a past task.');
+            if(userTime === minTime){
+                alert('Please enter a time that is later than the current time.')
+            }else{
+                alert('Please enter a valid time. You cannot add a past task.');
+            }
             return;
         }
 
