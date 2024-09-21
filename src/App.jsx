@@ -13,9 +13,9 @@ function App() {
     <div className={`${mode === "dark"
                       ? "bg-gradient-to-b from-gray-800 to-black text-customCyan"
                       : "bg-gradient-to-b from-gray-200 to-gray-600 text-gray-900"}
-                      h-full min-h-dvh max-h-dvh overflow-x-hidden select-none`}>
+                      h-full min-h-dvh max-h-dvh w-full overflow-x-hidden select-none`}>
       <NavBar mode={mode} setMode={setMode}/>
-      <div className="flex justify-center w-full items-center flex-col">
+      <div className="flex justify-center w-full items-center flex-col p-2">
         <AddTodo
             setAllTodos={setAllTodos}
             todoRef={todoRef}
