@@ -79,8 +79,8 @@ export default function AddTodo({ setAllTodos, todoRef, mode }) {
 
     return (
         <div className="flex flex-col items-center gap-5 mt-5">
-            <p className="text-3xl">New Task Entry</p>
-            <div className="flex gap-4">
+            <p className="text-xl sm:text-3xl">New Task Entry</p>
+            <div className="flex gap-4 flex-col md:flex-row">
                 <TitleInput userInput={userInput} handleInputChange={handleInputChange} mode={mode} />
                 <DateInput userDate={userDate} handleDateChange={handleDateChange} mode={mode} />
                 <TimeInput userTime={userTime} handleTimeChange={handleTimeChange} minTime={minTime} mode={mode} />
@@ -105,7 +105,7 @@ function TitleInput({userInput,handleInputChange,mode}){
             type="text"
             value={userInput}
             onChange={handleInputChange}
-            className={`h-10 w-80 rounded-lg ring-2 px-2 focus:outline-none focus:ring-2 focus:ring-sky-600
+            className={`h-10 w-60 sm:w-80 rounded-lg ring-2 px-2 focus:outline-none focus:ring-2 focus:ring-sky-600
             ${mode === "dark"
                 ? "bg-customDarkGray ring-gray-700 text-white focus:bg-customBlack"
                 : "bg-gray-100 ring-gray-400 text-gray-900 focus:bg-white"}`}
@@ -121,7 +121,7 @@ function DateInput({userDate,handleDateChange,mode}){
             value={userDate}
             onChange={handleDateChange}
             min={new Date().toISOString().slice(0, 10)}
-            className={`px-3 py-1 rounded-lg ring-2 focus:outline-none focus:ring-sky-600
+            className={`px-3 w-60 sm:w-auto py-1 rounded-lg ring-2 focus:outline-none focus:ring-sky-600
             ${mode === "dark"
                 ? "bg-customDarkGray ring-gray-700 text-white"
                 : "bg-gray-100 ring-gray-400 text-gray-900"}`}
@@ -136,7 +136,7 @@ function TimeInput({userTime, handleTimeChange, minTime, mode}){
             value={userTime}
             onChange={handleTimeChange}
             min={minTime}
-            className={`px-3 py-1 rounded-lg ring-2 focus:outline-none focus:ring-sky-600
+            className={`px-3 w-60 sm:w-auto py-1 rounded-lg ring-2 focus:outline-none focus:ring-sky-600
             ${mode === "dark"
                 ? "bg-customDarkGray ring-gray-700 text-white"
                 : "bg-gray-100 ring-gray-400 text-gray-900"}`}
