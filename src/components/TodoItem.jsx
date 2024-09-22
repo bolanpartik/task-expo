@@ -68,7 +68,7 @@ export default function TodoItem({ allTodos, id, setAllTodos, mode }) {
 
     return (
         <div
-            className={`flex w-full rounded-md p-3 justify-between items-center transition-all duration-500 overflow-hidden cursor-pointer hover:outline outline-1
+            className={`flex w-full rounded-md p-1 sm:p-3 justify-between items-center transition-all duration-500 overflow-hidden cursor-pointer hover:outline outline-1
             ${isTodoCompleted ?
                 (mode === 'dark' ? 'bg-green-900/30' : 'bg-green-100') :
                 (mode === 'dark' ? 'bg-gray-800 hover:bg-gray-700' : 'bg-gray-300 hover:bg-gray-200')}
@@ -78,26 +78,26 @@ export default function TodoItem({ allTodos, id, setAllTodos, mode }) {
 
             <div className={`flex gap-3 w-2/3 items-center ${mode === 'dark' ? 'text-white' : 'text-gray-700'}`}>
                 <p
-                    className={`text-lg font-medium w-2/3 transition-all
+                    className={`text-base sm:text-lg font-medium w-full sm:w-2/3 transition-all
                     ${isTodoCompleted ? 'line-through' : 'no-underline'}
                     ${mode === 'dark' ? 'text-white' : 'text-gray-900'}`}>
                     {currTodo.title}
                 </p>
-                <p className='w-1/4'>{currTodo.dueDate}</p>
-                <p >{currTodo.dueTime}</p>
+                <p className='text-xs sm:text-base'>{currTodo.dueDate}</p>
+                <p className='text-xs sm:text-base'>{currTodo.dueTime}</p>
             </div>
 
-            {isTodoCompleted && <CheckCheck className={`${mode === 'dark' ? 'text-green-500' : 'text-emerald-600'}`} />}
+            {isTodoCompleted && <CheckCheck className={`hidden sm:block ${mode === 'dark' ? 'text-green-500' : 'text-emerald-600'}`} />}
 
             <div className="flex w-1/5 justify-between">
                 <SquarePen
                     onClick={handleEdit}
-                    className={`transition-transform duration-150 hover:scale-95
+                    className={`transition-transform duration-150 hover:scale-95 h-4 w-4 sm:h-auto sm:w-auto
                     ${mode === 'dark' ? 'hover:text-green-500' : 'hover:text-emerald-600'}`}
                 />
                 <Trash2
                     onClick={handleDelete}
-                    className={`mr-3 transition-transform duration-150 hover:scale-95
+                    className={`sm:mr-3 transition-transform duration-150 hover:scale-95 h-4 w-4 sm:h-auto sm:w-auto
                     ${mode === 'dark' ? 'hover:text-red-600' : 'hover:text-rose-600'}`}
                 />
             </div>
